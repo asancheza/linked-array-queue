@@ -1,5 +1,3 @@
-
-
 public class Tester {
   public static void main(String[] args) {
     Queue q = new ArrayQueue();
@@ -10,7 +8,9 @@ public class Tester {
       }
 
       for (int i = 0; i < 100; i++) {
-        if (i != q.dequeue()) {
+        int val = q.dequeue();
+        System.out.println(val);
+        if (i != val) {
           System.out.println("Broken");
         }
       }
@@ -24,7 +24,9 @@ public class Tester {
       }
 
       for (int i = 0; i < 100; i++) {
-        if (i != q2.dequeue()) {
+        int val = q2.dequeue();
+        System.out.println(val);
+        if (i != val) {
           System.out.println("Broken");
         }
       }

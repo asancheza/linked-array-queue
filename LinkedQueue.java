@@ -17,27 +17,31 @@ public class LinkedQueue implements Queue {
   }
 
   public void enqueue(int value) {
-    if (this.isFull()) {
-      Node node = new Node();
-      node.value = value;
-      node.next = first;
-      last.next = node;
-    } else if (isEmpty()) {
-      first.value = value;
-      last = first;
+    Node temp = new Node();
+    temp.value = value;
+   
+    if (isEmpty()) {
+      temp.next = temp;
+      first = temp;
+      last = temp;
     } else {
-      last = last.next;
-      last.value = value;
+      temp.next = first;
+      last.next = temp;
+      last = temp;
     }
   }
 
   public int dequeue() {
+    if (isEmpty())
+      throw new IllegalStateException();
+
     int value = getFront();
 
-    if (first == last) {
-
+    if (first.next == first) {
+      first = last = null;
     } else {
-
+      first = first.next;
+      last.next = first;
     }
 
     return value;
